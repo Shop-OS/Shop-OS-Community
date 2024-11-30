@@ -1,0 +1,439 @@
+{
+  "10": {
+    "inputs": {
+      "image": "Aishwarya_Rai_Bachchan.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "101": {
+    "inputs": {
+      "low_threshold": 90,
+      "high_threshold": 255,
+      "resolution": 1024,
+      "image": ["10", 0]
+    },
+    "class_type": "CannyEdgePreprocessor",
+    "_meta": {
+      "title": "Canny Edge"
+    }
+  },
+  "102": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": ["110", 0],
+      "control_net": ["103", 0],
+      "image": ["107", 0]
+    },
+    "class_type": "ControlNetApply",
+    "_meta": {
+      "title": "Apply Depth ControlNet"
+    }
+  },
+  "103": {
+    "inputs": {
+      "control_net_name": "control_v11f1p_sd15_depth_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "106": {
+    "inputs": {
+      "images": ["107", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "107": {
+    "inputs": {
+      "resolution": 1024,
+      "image": ["10", 0]
+    },
+    "class_type": "Zoe-DepthMapPreprocessor",
+    "_meta": {
+      "title": "Zoe Depth Map"
+    }
+  },
+  "108": {
+    "inputs": {
+      "detect_hand": "enable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 512,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "image": ["10", 0]
+    },
+    "class_type": "DWPreprocessor",
+    "_meta": {
+      "title": "DWPose Estimator"
+    }
+  },
+  "109": {
+    "inputs": {
+      "images": ["108", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "110": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": ["6", 0],
+      "control_net": ["103", 0],
+      "image": ["108", 0]
+    },
+    "class_type": "ControlNetApply",
+    "_meta": {
+      "title": "Apply Openpose ControlNet"
+    }
+  },
+  "112": {
+    "inputs": {
+      "lora_name": "epicRealismHelper.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": ["4", 0],
+      "clip": ["4", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "115": {
+    "inputs": {
+      "clip_name": "IPAdapter_image_encoder_sd15.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "116": {
+    "inputs": {
+      "image": "avatar (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Face Image"
+    }
+  },
+  "117": {
+    "inputs": {
+      "crop_position": "top",
+      "sharpening": 0,
+      "pad_around": false,
+      "image": ["123", 0]
+    },
+    "class_type": "PrepImageForInsightFace",
+    "_meta": {
+      "title": "Prepare Image For InsightFace"
+    }
+  },
+  "118": {
+    "inputs": {
+      "weight": 0.9,
+      "noise": 0.33,
+      "weight_type": "original",
+      "start_at": 0,
+      "end_at": 1,
+      "unfold_batch": false,
+      "ipadapter": ["119", 0],
+      "clip_vision": ["115", 0],
+      "image": ["117", 0],
+      "model": ["112", 0]
+    },
+    "class_type": "IPAdapterApply",
+    "_meta": {
+      "title": "Apply IPAdapter"
+    }
+  },
+  "119": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-full-face_sd15.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "Load IPAdapter Model"
+    }
+  },
+  "12": {
+    "inputs": {
+      "model_name": "sam_hq_vit_h (2.57GB)"
+    },
+    "class_type": "SAMModelLoader (segment anything)",
+    "_meta": {
+      "title": "SAMModelLoader (segment anything)"
+    }
+  },
+  "120": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "YOLOv5n",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "detect_gender_source": "no",
+      "detect_gender_input": "no",
+      "source_faces_index": "0",
+      "input_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": ["46", 0],
+      "source_image": ["123", 0]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor - Fast Face Swap"
+    }
+  },
+  "122": {
+    "inputs": {
+      "images": ["123", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "123": {
+    "inputs": {
+      "crop_padding_factor": 0.2,
+      "cascade_xml": "haarcascade_frontalface_alt2.xml",
+      "image": ["116", 0]
+    },
+    "class_type": "Image Crop Face",
+    "_meta": {
+      "title": "Image Crop Face"
+    }
+  },
+  "125": {
+    "inputs": {
+      "images": ["120", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "13": {
+    "inputs": {
+      "model_name": "GroundingDINO_SwinT_OGC (694MB)"
+    },
+    "class_type": "GroundingDinoModelLoader (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoModelLoader (segment anything)"
+    }
+  },
+  "14": {
+    "inputs": {
+      "prompt": "clothes, pants",
+      "threshold": 0.3,
+      "sam_model": ["12", 0],
+      "grounding_dino_model": ["13", 0],
+      "image": ["10", 0]
+    },
+    "class_type": "GroundingDinoSAMSegment (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoSAMSegment (segment anything)"
+    }
+  },
+  "15": {
+    "inputs": {
+      "images": ["14", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "16": {
+    "inputs": {
+      "mask": ["14", 1]
+    },
+    "class_type": "InvertMask (segment anything)",
+    "_meta": {
+      "title": "InvertMask (segment anything)"
+    }
+  },
+  "17": {
+    "inputs": {
+      "mask": ["16", 0]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Mask To Image (mtb)"
+    }
+  },
+  "18": {
+    "inputs": {
+      "images": ["17", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "19": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_canny_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "20": {
+    "inputs": {
+      "grow_mask_by": 10,
+      "pixels": ["14", 0],
+      "vae": ["4", 2],
+      "mask": ["16", 0]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": ["110", 0],
+      "control_net": ["19", 0],
+      "image": ["101", 0]
+    },
+    "class_type": "ControlNetApply",
+    "_meta": {
+      "title": "Apply Canny ControlNet"
+    }
+  },
+  "23": {
+    "inputs": {
+      "images": ["101", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "3": {
+    "inputs": {
+      "seed": 204454051472379,
+      "steps": 30,
+      "cfg": 9,
+      "sampler_name": "ddpm",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": ["118", 0],
+      "positive": ["21", 0],
+      "negative": ["6", 0],
+      "latent_image": ["20", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "epicRealism.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "44": {
+    "inputs": {
+      "upscale_by": 3,
+      "seed": 439987270306626,
+      "steps": 2,
+      "cfg": 4.5,
+      "sampler_name": "ddpm",
+      "scheduler": "karras",
+      "denoise": 0.21,
+      "mode_type": "Linear",
+      "tile_width": 576,
+      "tile_height": 576,
+      "mask_blur": 32,
+      "tile_padding": 32,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": false,
+      "tiled_decode": false,
+      "image": ["120", 0],
+      "model": ["112", 0],
+      "positive": ["21", 0],
+      "negative": ["6", 0],
+      "vae": ["4", 2],
+      "upscale_model": ["48", 0]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "45": {
+    "inputs": {
+      "filename_prefix": "FaceSwapFinal",
+      "images": ["44", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "46": {
+    "inputs": {
+      "samples": ["3", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "48": {
+    "inputs": {
+      "model_name": "4x_foolhardy_Remacri.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "man, realistic, in a garden, golden hour, detailed eyes, detailed face and detailed skin, tidy hair",
+      "clip": ["112", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime), text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, (embedding:baddream:1), (embedding:unrealisticdream:1), (embedding:badhands:1), (embedding:betterhands:1), (embedding:fastnegative:1), (embedding:negativehand:1)",
+      "clip": ["112", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  }
+}

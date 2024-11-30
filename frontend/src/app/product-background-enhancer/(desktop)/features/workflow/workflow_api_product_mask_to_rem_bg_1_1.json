@@ -1,0 +1,719 @@
+{
+  "100": {
+    "inputs": {
+      "transparency": true,
+      "model": "u2net_human_seg",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "104": {
+    "inputs": {
+      "transparency": true,
+      "model": "silueta",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "transparency": true,
+      "model": "isnet-general-use",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["5", 0],
+      "optional_mask": ["12", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "112": {
+    "inputs": {
+      "transparency": true,
+      "model": "isnet-anime",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "12": {
+    "inputs": {
+      "mask": ["8", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "131": {
+    "inputs": {
+      "any_01": ["95", 0]
+    },
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch (rgthree)"
+    }
+  },
+  "136": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["51", 0],
+      "optional_mask": ["138", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "137": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["51", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "138": {
+    "inputs": {
+      "mask": ["137", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "144": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["39", 0],
+      "optional_mask": ["146", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "145": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["39", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "146": {
+    "inputs": {
+      "mask": ["145", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "147": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["77", 0],
+      "optional_mask": ["149", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "148": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["77", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "149": {
+    "inputs": {
+      "mask": ["148", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "150": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["96", 0],
+      "optional_mask": ["152", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "151": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["96", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "152": {
+    "inputs": {
+      "mask": ["151", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "153": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["100", 0],
+      "optional_mask": ["155", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "154": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["100", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "155": {
+    "inputs": {
+      "mask": ["154", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "156": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["104", 0],
+      "optional_mask": ["158", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "157": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["104", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "158": {
+    "inputs": {
+      "mask": ["157", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "159": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["108", 0],
+      "optional_mask": ["161", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "160": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["108", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "161": {
+    "inputs": {
+      "mask": ["160", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "162": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["112", 0],
+      "optional_mask": ["164", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "163": {
+    "inputs": {
+      "channel": "alpha",
+      "image": ["112", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "164": {
+    "inputs": {
+      "mask": ["163", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "167": {
+    "inputs": {
+      "image": "ComfyUI_00036_.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "168": {
+    "inputs": {
+      "channel": "red",
+      "image": ["167", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "17": {
+    "inputs": {
+      "feathering": 2048,
+      "feather_second_pass": "true",
+      "left_padding": 8,
+      "right_padding": 8,
+      "top_padding": 8,
+      "bottom_padding": 8,
+      "image": ["5", 0]
+    },
+    "class_type": "Image Padding",
+    "_meta": {
+      "title": "Image Padding"
+    }
+  },
+  "18": {
+    "inputs": {
+      "model_name": "segm/person_yolov8m-seg.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "20": {
+    "inputs": {
+      "threshold": 0.5,
+      "dilation": 10,
+      "crop_factor": 3,
+      "drop_size": 10,
+      "labels": "all",
+      "bbox_detector": ["18", 0],
+      "image": ["5", 0]
+    },
+    "class_type": "BboxDetectorSEGS",
+    "_meta": {
+      "title": "BBOX Detector (SEGS)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "detection_hint": "center-1",
+      "dilation": 0,
+      "threshold": 0.93,
+      "bbox_expansion": 0,
+      "mask_hint_threshold": 0.7000000000000001,
+      "mask_hint_use_negative": "False",
+      "sam_model": ["22", 0],
+      "segs": ["20", 0],
+      "image": ["5", 0]
+    },
+    "class_type": "SAMDetectorCombined",
+    "_meta": {
+      "title": "SAMDetector (combined)"
+    }
+  },
+  "22": {
+    "inputs": {
+      "model_name": "sam_vit_h_4b8939.pth",
+      "device_mode": "AUTO"
+    },
+    "class_type": "SAMLoader",
+    "_meta": {
+      "title": "SAMLoader (Impact)"
+    }
+  },
+  "25": {
+    "inputs": {
+      "overlay_resize": "None",
+      "resize_method": "nearest-exact",
+      "rescale_factor": 1,
+      "width": 512,
+      "height": 512,
+      "x_offset": 0,
+      "y_offset": 0,
+      "rotation": 0,
+      "opacity": 0,
+      "base_image": ["131", 0],
+      "overlay_image": ["5", 0],
+      "optional_mask": ["28", 0]
+    },
+    "class_type": "Image Overlay",
+    "_meta": {
+      "title": "Image Overlay"
+    }
+  },
+  "28": {
+    "inputs": {
+      "mask": ["21", 0]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "39": {
+    "inputs": {
+      "transparency": true,
+      "model": "isnet-anime",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "40": {
+    "inputs": {
+      "images": ["144", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "45": {
+    "inputs": {
+      "filename_prefix": "aditya_abc",
+      "images": ["49", 7]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "49": {
+    "inputs": {
+      "images": ["11", 0]
+    },
+    "class_type": "Context (rgthree)",
+    "_meta": {
+      "title": "Context (rgthree)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "3d8b873f-274e-4403-81e1-816b7f5597031695901342743SeraFuchsiaDress1 (8).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "51": {
+    "inputs": {
+      "image": ["5", 0]
+    },
+    "class_type": "Remove Image Background (abg)",
+    "_meta": {
+      "title": "Remove Image Background (abg)"
+    }
+  },
+  "52": {
+    "inputs": {
+      "images": ["136", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "58": {
+    "inputs": {
+      "images": ["25", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "60": {
+    "inputs": {
+      "images": ["11", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "77": {
+    "inputs": {
+      "transparency": true,
+      "model": "u2net",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "masks": ["168", 0]
+    },
+    "class_type": "MasksToMaskList",
+    "_meta": {
+      "title": "Masks to Mask List"
+    }
+  },
+  "82": {
+    "inputs": {
+      "image_1": ["159", 0],
+      "image_2": ["162", 0]
+    },
+    "class_type": "ImageCombine",
+    "_meta": {
+      "title": "ImageCombine"
+    }
+  },
+  "86": {
+    "inputs": {
+      "column_texts": "",
+      "row_texts": "RemBG (u2net);RemBG (u2netp);RemBG (u2net_human_seg);RemBG (silueta);RemBG (isnet-general-use);RemBG (isnet-anime);",
+      "font_size": 50
+    },
+    "class_type": "GridAnnotation",
+    "_meta": {
+      "title": "GridAnnotation"
+    }
+  },
+  "94": {
+    "inputs": {
+      "image": ["5", 0]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "95": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": ["94", 0],
+      "height": ["94", 1],
+      "crop": "disabled",
+      "image": ["17", 0]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "96": {
+    "inputs": {
+      "transparency": true,
+      "model": "u2netp",
+      "post_processing": true,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": ["5", 0]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  }
+}

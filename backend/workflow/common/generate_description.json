@@ -1,0 +1,41 @@
+{
+  "19": {
+    "inputs": {
+      "question": "What are the clothes the subject is wearing? Describe all the clothes in the image in 5 words. (Example output: 'Black shirt with blue jeans')Do not mention any brand's name. Mention only primary color of the clothes. No full-stop at the end.",
+      "image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "MoonDream",
+    "_meta": {
+      "title": "MoonDream Node"
+    }
+  },
+  "20": {
+    "inputs": {
+      "text": [
+        "19",
+        0
+      ],
+      "path": "/home/azureuser/workspace/ComfyUI/output/",
+      "filename_prefix": "description",
+      "filename_delimiter": "_",
+      "filename_number_padding": 4
+    },
+    "class_type": "Save Text File",
+    "_meta": {
+      "title": "Save Text File"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "image (1) (1).jpeg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}

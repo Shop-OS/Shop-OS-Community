@@ -1,0 +1,35 @@
+{
+  "19": {
+    "inputs": {
+      "question": "Describe only the product in the image in 5 words. Do not describe the background. Do not mention any brand's name. Do not mention size of the product. Mention only primary color of the product. No full-stop at the end. Example output, 'A white coffee cup with a green logo on it'. Do not use example output as the final output.",
+      "image": ["5", 0]
+    },
+    "class_type": "MoonDream",
+    "_meta": {
+      "title": "MoonDream Node"
+    }
+  },
+  "20": {
+    "inputs": {
+      "text": ["19", 0],
+      "path": "/home/azureuser/workspace/ComfyUI/output/",
+      "filename_prefix": "description",
+      "filename_delimiter": "_",
+      "filename_number_padding": 4
+    },
+    "class_type": "Save Text File",
+    "_meta": {
+      "title": "Save Text File"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "image (1) (1).jpeg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}

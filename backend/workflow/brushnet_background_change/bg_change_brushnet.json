@@ -1,0 +1,224 @@
+{
+  "1": {
+    "inputs": {
+      "image": "WhatsApp Image 2024-03-24 at 12.54.20 (1).jpeg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "24": {
+    "inputs": {
+      "brushnet": "brushnet/random_mask_brushnet_ckpt/diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "BrushNetLoader",
+    "_meta": {
+      "title": "BrushNet Loader"
+    }
+  },
+  "47": {
+    "inputs": {
+      "transparency": false,
+      "model": "u2net_human_seg",
+      "post_processing": false,
+      "only_mask": true,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 5,
+      "background_color": "black",
+      "images": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "50": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "51": {
+    "inputs": {
+      "mask": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "InvertMask"
+    }
+  },
+  "53": {
+    "inputs": {
+      "filename_prefix": "myFile",
+      "filename_keys": "",
+      "foldername_prefix": "",
+      "foldername_keys": "",
+      "delimiter": "underscore",
+      "save_job_data": "disabled",
+      "job_data_per_image": "disabled",
+      "job_custom_text": "",
+      "save_metadata": "disabled",
+      "counter_digits": 5,
+      "counter_position": "last",
+      "one_counter_per_folder": "disabled",
+      "image_preview": "enabled",
+      "images": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "SaveImageExtended",
+    "_meta": {
+      "title": "Save Image Extended"
+    }
+  },
+  "64": {
+    "inputs": {
+      "seed": 388295855199822,
+      "steps": 50,
+      "scale": 1,
+      "BRPL": [
+        "70",
+        0
+      ],
+      "image": [
+        "66",
+        0
+      ],
+      "mask": [
+        "51",
+        0
+      ],
+      "positive": [
+        "67",
+        0
+      ],
+      "negative": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "BrushNetInpaint",
+    "_meta": {
+      "title": "BrushNet Inpaint"
+    }
+  },
+  "66": {
+    "inputs": {
+      "width": 512,
+      "height": 1024,
+      "interpolation": "nearest",
+      "keep_proportion": true,
+      "condition": "downscale if bigger",
+      "multiple_of": 0,
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": "(standing in middle of a european street, beautiful cafe visible on the sidewalk, canopy, sunny day, modern aestheically pleasing cafe, cafe lights, sunny day),",
+      "clip": [
+        "69",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "68": {
+    "inputs": {
+      "text": "semi-realistic, cgi, sketch, cartoon, drawing, anime, cropped,  worst quality, low quality, ugly, mutilated, deformed, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face",
+      "clip": [
+        "69",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "69": {
+    "inputs": {
+      "ckpt_name": "realisticVisionV60B1_v51VAE.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "70": {
+    "inputs": {
+      "model": [
+        "69",
+        0
+      ],
+      "clip": [
+        "69",
+        1
+      ],
+      "vae": [
+        "69",
+        2
+      ],
+      "brushnet": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "BrushNetPipeline",
+    "_meta": {
+      "title": "BrushNet Pipeline"
+    }
+  },
+  "71": {
+    "inputs": {
+      "images": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "78": {
+    "inputs": {
+      "images": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  }
+}

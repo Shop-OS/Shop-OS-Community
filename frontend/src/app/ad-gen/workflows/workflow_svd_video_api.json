@@ -1,0 +1,190 @@
+{
+  "12": {
+    "inputs": {
+      "width": 1280,
+      "height": 720,
+      "video_frames": 25,
+      "motion_bucket_id": 20,
+      "fps": 6,
+      "augmentation_level": 0.01,
+      "clip_vision": ["15", 1],
+      "init_image": ["24", 0],
+      "vae": ["15", 2]
+    },
+    "class_type": "SVD_img2vid_Conditioning",
+    "_meta": {
+      "title": "SVD_img2vid_Conditioning"
+    }
+  },
+  "14": {
+    "inputs": {
+      "min_cfg": 1,
+      "model": ["15", 0]
+    },
+    "class_type": "VideoLinearCFGGuidance",
+    "_meta": {
+      "title": "VideoLinearCFGGuidance"
+    }
+  },
+  "15": {
+    "inputs": {
+      "ckpt_name": "SVD/svd_xt.safetensors"
+    },
+    "class_type": "ImageOnlyCheckpointLoader",
+    "_meta": {
+      "title": "Image Only Checkpoint Loader (img2vid model)"
+    }
+  },
+  "16": {
+    "inputs": {
+      "ckpt_name": "juggernaut_xl.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "17": {
+    "inputs": {
+      "seed": 843441903419251,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": ["16", 0],
+      "positive": ["18", 0],
+      "negative": ["19", 0],
+      "latent_image": ["22", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "18": {
+    "inputs": {
+      "text": "dark grey waves with particle effect on a white background",
+      "clip": ["16", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "19": {
+    "inputs": {
+      "text": "text, watermark, nsfw, naked, nude, breasts, nipples, humans, objects",
+      "clip": ["16", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "20": {
+    "inputs": {
+      "samples": ["17", 0],
+      "vae": ["16", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "22": {
+    "inputs": {
+      "width": 1280,
+      "height": 720,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "23": {
+    "inputs": {
+      "frame_rate": 6,
+      "loop_count": 0,
+      "filename_prefix": "SDV",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "pingpong": true,
+      "save_output": true,
+      "images": ["8", 0]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "24": {
+    "inputs": {
+      "upscale_model": ["26", 0],
+      "image": ["20", 0]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "26": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "27": {
+    "inputs": {
+      "images": ["20", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "29": {
+    "inputs": {
+      "amount": 1,
+      "samples": ["12", 2]
+    },
+    "class_type": "RepeatLatentBatch",
+    "_meta": {
+      "title": "Repeat Latent Batch"
+    }
+  },
+  "3": {
+    "inputs": {
+      "seed": 1067065870234308,
+      "steps": 12,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": ["14", 0],
+      "positive": ["12", 0],
+      "negative": ["12", 1],
+      "latent_image": ["29", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": ["3", 0],
+      "vae": ["15", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  }
+}

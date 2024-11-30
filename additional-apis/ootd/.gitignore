@@ -1,0 +1,9 @@
+venv/
+.env
+**/**/__pycache__/
+**/__pycache__/
+routes/__pycache__/scrape.cpython-310.pyc
+checkpoint/*.pth
+*.log
+error.log
+routes/__pycache__/*

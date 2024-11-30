@@ -1,0 +1,86 @@
+{
+  "agents": [
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "apparel-shoots",
+      "meta": {
+        "avatar": "👚",
+        "description": "Change Backgrounds of your clothing and Try on different Fashion Models",
+        "tags": [
+          "Apparel",
+          "Fashion",
+          "Clothing",
+          "E-Commerce"
+        ],
+        "title": "Apparel Shoots"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "product-background-enhancer",
+      "meta": {
+        "avatar": "📷",
+        "description": "Create High Quality AI generated E-Commerce Photoshoots of your products",
+        "tags": [
+          "Product Photography",
+          "E-Commerce"
+        ],
+        "title": "Product Background Enhancer"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "text-to-3d",
+      "meta": {
+        "avatar": "🪩",
+        "description": "Create High Quality AI generated 3D object of your products",
+        "tags": [
+          "Text to 3D",
+          "Image to 3D"
+        ],
+        "title": "Text to 3D"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "background-changer",
+      "meta": {
+        "avatar": "🖼️",
+        "description": "Change Backgrounds of your clothing on your fashion models",
+        "tags": [
+          "Fashion",
+          "Clothing",
+          "E-Commerce"
+        ],
+        "title": "Background Changer"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-04-05",
+      "homepage": "https://github.com/",
+      "identifier": "send-email",
+      "meta": {
+        "avatar": "📧",
+        "description": "Click here to send an email and request a specific agent for your needs.",
+        "tags": [
+          "Request an Agent"
+        ],
+        "title": "Request an Agent"
+      },
+      "schemaVersion": 1
+    }
+  ]
+}

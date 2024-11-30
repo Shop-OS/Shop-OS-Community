@@ -1,0 +1,504 @@
+{
+  "1": {
+    "inputs": {
+      "model_name": "GroundingDINO_SwinB (938MB)"
+    },
+    "class_type": "GroundingDinoModelLoader (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoModelLoader (segment anything)"
+    }
+  },
+  "103": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "104": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "destination": ["39", 0],
+      "source": ["72", 0],
+      "mask": ["141", 0]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "ImageCompositeMasked"
+    }
+  },
+  "105": {
+    "inputs": {
+      "images": ["104", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "106": {
+    "inputs": {
+      "filename_prefix": "upscaled-2x-",
+      "images": ["104", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "107": {
+    "inputs": {
+      "text_positive_g": ["85", 0],
+      "text_positive_l": "Ultra-realistic 8k CG,masterpiece,best quality,(photorealistic:1.4),HDR,Professional,RAW photo, Bokeh,((Depth of field, womps), realistic, Highly detailed,Professional,extreme detail description, sensible image",
+      "text_negative": "floating, blurry, cropped, fake, ugly, bad quality, chaotic, random, painting, rendering, drawing, graphic design, colorful, small texts, watermark, Forehead, manicure, drawing, sketch, duplicate, morbid, mutilated, mutated, deformed, disfigured, extra limbs, malformed limbs, missing arms, missing legs, extra arms, extra legs, long neck, grayscale, b&w,",
+      "style": "artstyle-hyperrealism",
+      "negative_prompt_to": "Both",
+      "copy_to_l": true,
+      "log_prompt": false
+    },
+    "class_type": "SDXLPromptStylerAdvanced",
+    "_meta": {
+      "title": "SDXL Prompt Styler Advanced"
+    }
+  },
+  "116": {
+    "inputs": {
+      "ckpt_name": "depth_anything_vitl14.pth",
+      "resolution": 1024,
+      "image": ["94", 0]
+    },
+    "class_type": "DepthAnythingPreprocessor",
+    "_meta": {
+      "title": "Depth Anything"
+    }
+  },
+  "117": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "118": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 0.8,
+      "positive": ["34", 0],
+      "negative": ["35", 0],
+      "control_net": ["117", 0],
+      "image": ["116", 0]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "121": {
+    "inputs": {
+      "weight": 0.9,
+      "noise": 0,
+      "weight_type": "original",
+      "start_at": 0,
+      "end_at": 0.8,
+      "unfold_batch": false,
+      "ipadapter": ["122", 0],
+      "clip_vision": ["123", 0],
+      "image": ["124", 0],
+      "model": ["127", 0]
+    },
+    "class_type": "IPAdapterApply",
+    "_meta": {
+      "title": "Apply IPAdapter"
+    }
+  },
+  "122": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter_sdxl.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "Load IPAdapter Model"
+    }
+  },
+  "123": {
+    "inputs": {
+      "clip_name": "CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "124": {
+    "inputs": {
+      "image": "pexels-volkan-vardar-3888048 (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "126": {
+    "inputs": {
+      "b1": 1.3,
+      "b2": 1.4000000000000001,
+      "s1": 0.9,
+      "s2": 0.2,
+      "model": ["121", 0]
+    },
+    "class_type": "FreeU",
+    "_meta": {
+      "title": "FreeU"
+    }
+  },
+  "127": {
+    "inputs": {
+      "lora_name": "outdoor_product_photography.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": ["130", 0],
+      "clip": ["130", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "13": {
+    "inputs": {
+      "images": ["7", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "130": {
+    "inputs": {
+      "lora_name": "better_landscapes.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": ["92", 0],
+      "clip": ["92", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "131": {
+    "inputs": {
+      "image": "canvas-transparent-mask (3).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "136": {
+    "inputs": {
+      "radius": 2,
+      "sigma_factor": 1.5,
+      "image": ["138", 0]
+    },
+    "class_type": "Blur",
+    "_meta": {
+      "title": "Blur"
+    }
+  },
+  "137": {
+    "inputs": {
+      "amount": 1,
+      "image": ["136", 0]
+    },
+    "class_type": "ImageCASharpening+",
+    "_meta": {
+      "title": "🔧 Image Contrast Adaptive Sharpening"
+    }
+  },
+  "138": {
+    "inputs": {
+      "mask": ["2", 1]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "images": ["143", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "141": {
+    "inputs": {
+      "channel": "red",
+      "image": ["137", 0]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "142": {
+    "inputs": {
+      "radius": 1,
+      "sigma_factor": 1.5,
+      "image": ["2", 0]
+    },
+    "class_type": "Blur",
+    "_meta": {
+      "title": "Blur"
+    }
+  },
+  "143": {
+    "inputs": {
+      "amount": 1,
+      "image": ["142", 0]
+    },
+    "class_type": "ImageCASharpening+",
+    "_meta": {
+      "title": "🔧 Image Contrast Adaptive Sharpening"
+    }
+  },
+  "2": {
+    "inputs": {
+      "prompt": "detergent pouch",
+      "threshold": 0.3,
+      "sam_model": ["3", 0],
+      "grounding_dino_model": ["1", 0],
+      "image": ["72", 0]
+    },
+    "class_type": "GroundingDinoSAMSegment (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoSAMSegment (segment anything)"
+    }
+  },
+  "24": {
+    "inputs": {
+      "stop_at_clip_layer": -1,
+      "clip": ["127", 1]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP Set Last Layer"
+    }
+  },
+  "3": {
+    "inputs": {
+      "model_name": "sam_vit_h (2.56GB)"
+    },
+    "class_type": "SAMModelLoader (segment anything)",
+    "_meta": {
+      "title": "SAMModelLoader (segment anything)"
+    }
+  },
+  "33": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": ["41", 0],
+      "steps": 30,
+      "cfg": 5.5,
+      "sampler_name": "dpmpp_sde_gpu",
+      "scheduler": "karras",
+      "start_at_step": 0,
+      "end_at_step": 1000,
+      "return_with_leftover_noise": "disable",
+      "model": ["126", 0],
+      "positive": ["50", 0],
+      "negative": ["50", 1],
+      "latent_image": ["54", 0]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "34": {
+    "inputs": {
+      "text": ["107", 2],
+      "clip": ["24", 0]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "35": {
+    "inputs": {
+      "text": ["107", 5],
+      "clip": ["24", 0]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "39": {
+    "inputs": {
+      "samples": ["33", 0],
+      "vae": ["92", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "40": {
+    "inputs": {
+      "images": ["39", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "41": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed (rgthree)"
+    }
+  },
+  "50": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 0.8,
+      "positive": ["118", 0],
+      "negative": ["118", 1],
+      "control_net": ["93", 0],
+      "image": ["66", 0]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "53": {
+    "inputs": {
+      "images": ["66", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "54": {
+    "inputs": {
+      "grow_mask_by": 6,
+      "pixels": ["143", 0],
+      "vae": ["92", 2],
+      "mask": ["6", 0]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "mask": ["141", 0]
+    },
+    "class_type": "InvertMask (segment anything)",
+    "_meta": {
+      "title": "InvertMask (segment anything)"
+    }
+  },
+  "66": {
+    "inputs": {
+      "enable_threshold": "false",
+      "threshold_low": 0.1,
+      "threshold_high": 0.3,
+      "images": ["94", 0]
+    },
+    "class_type": "Image Canny Filter",
+    "_meta": {
+      "title": "Image Canny Filter"
+    }
+  },
+  "7": {
+    "inputs": {
+      "masks": ["6", 0]
+    },
+    "class_type": "Convert Masks to Images",
+    "_meta": {
+      "title": "Convert Masks to Images"
+    }
+  },
+  "72": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "width": ["77", 0],
+      "height": ["77", 1],
+      "crop": "center",
+      "image": ["131", 0]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "77": {
+    "inputs": {
+      "image": ["94", 0]
+    },
+    "class_type": "CM_NearestSDXLResolution",
+    "_meta": {
+      "title": "NearestSDXLResolution"
+    }
+  },
+  "85": {
+    "inputs": {
+      "delimiter": " ",
+      "clean_whitespace": "true"
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "92": {
+    "inputs": {
+      "ckpt_name": "wildcardxXLTURBO_wildcardxXLTURBOV10.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "93": {
+    "inputs": {
+      "control_net_name": "control-lora-canny-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "94": {
+    "inputs": {
+      "image": "canvas-screenshot (6).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}

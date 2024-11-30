@@ -1,0 +1,62 @@
+{
+  "1": {
+    "inputs": {
+      "prompt": "girl",
+      "threshold": 0.3,
+      "sam_model": ["3", 0],
+      "grounding_dino_model": ["2", 0],
+      "image": ["5", 0]
+    },
+    "class_type": "GroundingDinoSAMSegment (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoSAMSegment (segment anything)"
+    }
+  },
+  "165": {
+    "inputs": {
+      "mask": ["1", 1]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "168": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": ["165", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "2": {
+    "inputs": {
+      "model_name": "GroundingDINO_SwinT_OGC (694MB)"
+    },
+    "class_type": "GroundingDinoModelLoader (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoModelLoader (segment anything)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "model_name": "sam_hq_vit_h (2.57GB)"
+    },
+    "class_type": "SAMModelLoader (segment anything)",
+    "_meta": {
+      "title": "SAMModelLoader (segment anything)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "3d8b873f-274e-4403-81e1-816b7f5597031695901342743SeraFuchsiaDress1 (7).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}

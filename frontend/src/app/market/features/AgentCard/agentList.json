@@ -1,0 +1,118 @@
+{
+  "agents": [
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "apparel-shoots",
+      "meta": {
+        "avatar": "/agentIcon/apparel.png",
+        "description": "Change Backgrounds of your clothing and Try on different Fashion Models",
+        "tags": [
+          "Apparel",
+          "Fashion",
+          "Clothing",
+          "eCommerce"
+        ],
+        "title": "Apparel Shoots"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "product-background-enhancer",
+      "meta": {
+        "avatar": "/agentIcon/product-bg.png",
+        "description": "Create High Quality AI generated E-Commerce Photoshoots of your products",
+        "tags": [
+          "Product Photography",
+          "eCommerce"
+        ],
+        "title": "Product Background Enhancer"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "text-to-3d",
+      "meta": {
+        "avatar": "/agentIcon/t23d.png",
+        "description": "Create High Quality AI generated 3D object of your products",
+        "tags": [
+          "Text to 3D",
+          "Image to 3D"
+        ],
+        "title": "Text to 3D"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "product-description",
+      "meta": {
+        "avatar": "/agentIcon/pd.png",
+        "description": "Create High Quality AI generated Product Descriptions for your products",
+        "tags": [
+          "Product Description"
+        ],
+        "title": "Product Description"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "background-changer",
+      "meta": {
+        "avatar": "/agentIcon/bg-change.png",
+        "description": "Change Backgrounds of your clothing on your fashion models",
+        "tags": [
+          "Fashion",
+          "Clothing",
+          "eCommerce"
+        ],
+        "title": "Background Changer"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-01-31",
+      "homepage": "https://github.com/",
+      "identifier": "drape-diffusion",
+      "meta": {
+        "avatar": "/agentIcon/ootd.png",
+        "description": "Try on your favorite outfits virtually, effortlessly visualizing them on diverse fashion models",
+        "tags": [
+          "Fashion",
+          "Clothing",
+          "eCommerce"
+        ],
+        "title": "Drape Diffusion"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "HOM",
+      "createAt": "2024-04-05",
+      "homepage": "https://github.com/",
+      "identifier": "send-email",
+      "meta": {
+        "avatar": "/agentIcon/email.png",
+        "description": "Click here to send an email and request a specific agent for your needs.",
+        "tags": [
+          "Request an Agent"
+        ],
+        "title": "Request an Agent"
+      },
+      "schemaVersion": 1
+    }
+  ]
+}

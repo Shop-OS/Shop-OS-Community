@@ -1,0 +1,381 @@
+{
+  "40": {
+    "inputs": {
+      "model_name": "sam_vit_h (2.56GB)"
+    },
+    "class_type": "SAMModelLoader (segment anything)",
+    "_meta": {
+      "title": "SAMModelLoader (segment anything)"
+    }
+  },
+  "41": {
+    "inputs": {
+      "model_name": "GroundingDINO_SwinT_OGC (694MB)"
+    },
+    "class_type": "GroundingDinoModelLoader (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoModelLoader (segment anything)"
+    }
+  },
+  "42": {
+    "inputs": {
+      "prompt": "human body",
+      "threshold": 0.4,
+      "sam_model": ["40", 0],
+      "grounding_dino_model": ["41", 0],
+      "image": ["45", 0]
+    },
+    "class_type": "GroundingDinoSAMSegment (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoSAMSegment (segment anything)"
+    }
+  },
+  "43": {
+    "inputs": {
+      "expand": 5,
+      "tapered_corners": true,
+      "mask": ["42", 1]
+    },
+    "class_type": "GrowMask",
+    "_meta": {
+      "title": "GrowMask"
+    }
+  },
+  "44": {
+    "inputs": {
+      "mask": ["43", 0]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Mask To Image (mtb)"
+    }
+  },
+  "45": {
+    "inputs": {
+      "image": "44-silkyshirtdhtps5h-ramraj-cotton-original-imagqn4ygxpkvbh7.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "46": {
+    "inputs": {
+      "images": ["44", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "60": {
+    "inputs": {
+      "prompt": "face, hair, ears",
+      "threshold": 0.29,
+      "sam_model": ["40", 0],
+      "grounding_dino_model": ["41", 0],
+      "image": ["45", 0]
+    },
+    "class_type": "GroundingDinoSAMSegment (segment anything)",
+    "_meta": {
+      "title": "GroundingDinoSAMSegment (segment anything)"
+    }
+  },
+  "61": {
+    "inputs": {
+      "images": ["60", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "62": {
+    "inputs": {
+      "expand": 5,
+      "tapered_corners": true,
+      "mask": ["60", 1]
+    },
+    "class_type": "GrowMask",
+    "_meta": {
+      "title": "GrowMask"
+    }
+  },
+  "63": {
+    "inputs": {
+      "mask": ["62", 0]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Mask To Image (mtb)"
+    }
+  },
+  "64": {
+    "inputs": {
+      "images": ["63", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "65": {
+    "inputs": {
+      "masks_a": ["43", 0],
+      "masks_b": ["62", 0]
+    },
+    "class_type": "Masks Subtract",
+    "_meta": {
+      "title": "Masks Subtract"
+    }
+  },
+  "66": {
+    "inputs": {
+      "mask": ["65", 0]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Mask To Image (mtb)"
+    }
+  },
+  "67": {
+    "inputs": {
+      "images": ["66", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "70": {
+    "inputs": {
+      "sigma": 5,
+      "masks": ["65", 0]
+    },
+    "class_type": "Mask Smooth Region",
+    "_meta": {
+      "title": "Mask Smooth Region"
+    }
+  },
+  "71": {
+    "inputs": {
+      "mask": ["86", 0]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Mask To Image (mtb)"
+    }
+  },
+  "72": {
+    "inputs": {
+      "images": ["71", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "73": {
+    "inputs": {
+      "ckpt_name": "epicRealism.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "74": {
+    "inputs": {
+      "text": "black men's blazer, white shirt, no tie, black pants",
+      "clip": ["87", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "75": {
+    "inputs": {
+      "text": "naked, gloves",
+      "clip": ["87", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "76": {
+    "inputs": {
+      "grow_mask_by": 6,
+      "pixels": ["45", 0],
+      "vae": ["73", 2],
+      "mask": ["86", 0]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "77": {
+    "inputs": {
+      "seed": 1004640678093485,
+      "steps": 35,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": ["87", 0],
+      "positive": ["80", 0],
+      "negative": ["75", 0],
+      "latent_image": ["76", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "78": {
+    "inputs": {
+      "samples": ["90", 0],
+      "vae": ["73", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "79": {
+    "inputs": {
+      "images": ["78", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "80": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": ["74", 0],
+      "control_net": ["82", 0],
+      "image": ["81", 0]
+    },
+    "class_type": "ControlNetApply",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "81": {
+    "inputs": {
+      "detect_hand": "enable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 512,
+      "image": ["45", 0]
+    },
+    "class_type": "OpenposePreprocessor",
+    "_meta": {
+      "title": "OpenPose Pose"
+    }
+  },
+  "82": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_openpose_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "84": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "85": {
+    "inputs": {
+      "images": ["78", 0]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "86": {
+    "inputs": {
+      "amount": 20,
+      "mask": ["70", 0]
+    },
+    "class_type": "MaskBlur+",
+    "_meta": {
+      "title": "🔧 Mask Blur"
+    }
+  },
+  "87": {
+    "inputs": {
+      "lora_name": "epicRealismHelper.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": ["73", 0],
+      "clip": ["73", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "88": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "YOLOv5n",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "detect_gender_source": "no",
+      "detect_gender_input": "no",
+      "source_faces_index": "0",
+      "input_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": ["78", 0],
+      "source_image": ["60", 0]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor - Fast Face Swap"
+    }
+  },
+  "90": {
+    "inputs": {
+      "seed": 817262896374512,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": ["87", 0],
+      "positive": ["80", 0],
+      "negative": ["75", 0],
+      "latent_image": ["77", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "91": {
+    "inputs": {
+      "filename_prefix": "OutFitTryOnFinal",
+      "images": ["88", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.RiveContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}

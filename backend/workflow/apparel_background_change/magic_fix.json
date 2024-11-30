@@ -1,0 +1,96 @@
+{
+  "1": {
+    "inputs": {
+      "image": "ComfyUI_00163_.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "2": {
+    "inputs": {
+      "image": "myFile_001.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "3": {
+    "inputs": {
+      "force_resize_width": 0,
+      "force_resize_height": 0,
+      "image": [
+        "2",
+        0
+      ],
+      "mask": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Cut By Mask",
+    "_meta": {
+      "title": "Cut By Mask"
+    }
+  },
+  "5": {
+    "inputs": {
+      "resize_behavior": "resize",
+      "image_base": [
+        "1",
+        0
+      ],
+      "image_to_paste": [
+        "3",
+        0
+      ],
+      "mask": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Paste By Mask",
+    "_meta": {
+      "title": "Paste By Mask"
+    }
+  },
+  "7": {
+    "inputs": {
+      "image": "myFile_001.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "12": {
+    "inputs": {
+      "filename_prefix": "myFile",
+      "filename_keys": "",
+      "foldername_prefix": "",
+      "foldername_keys": "",
+      "delimiter": "underscore",
+      "save_job_data": "disabled",
+      "job_data_per_image": "disabled",
+      "job_custom_text": "",
+      "save_metadata": "disabled",
+      "counter_digits": 5,
+      "counter_position": "last",
+      "one_counter_per_folder": "disabled",
+      "image_preview": "enabled",
+      "images": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "SaveImageExtended",
+    "_meta": {
+      "title": "Save Image Extended"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fff;
+  --foreground: #000;
+  --unfocused-border-color: #eaeaea;
+  --focused-border-color: #666;
+
+  --button-disabled-color: #fafafa;
+  --disabled-text-color: #999;
+
+  --geist-border-radius: 20px;
+  --geist-quarter-pad: 6px;
+  --geist-half-pad: 12px;
+  --geist-pad: 24px;
+  --geist-font: 'Arial';
+
+  --geist-error: #e00;
+
+  --subtitle: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cinematics {
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --unfocused-border-color: #333;
+    --focused-border-color: #888;
+    --foreground: #fff;
+    --button-disabled-color: #111;
+    --geist-error: red;
+    --subtitle: #8d8d8d;
+  }
+
+  .cinematics {
+    box-shadow: 0 0 200px rgba(255, 255, 255, 0.15);
+  }
+}
+
+@font-face {
+  font-family: 'BDO Grotesk';
+  src: url('/fonts/BDOGrotesk-Regular-BF648a656fd543a.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BDO Grotesk';
+  src: url('/fonts/BDOGrotesk-Medium-BF648a656fc86b8.ttf') format('truetype');
+  font-weight: 500;
+  /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BDO Grotesk';
+  src: url('/fonts/BDOGrotesk-DemiBold-BF648a656f9c460.ttf') format('truetype');
+  font-weight: 600;
+  /* SemiBold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BDO Grotesk';
+  src: url('/fonts/BDOGrotesk-Bold-BF648a656f8559f.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'BDO Grotesk', sans-serif;
+}
+
+input {
+  border: 1px solid var(--unfocused-border-color);
+  transition: border-color 0.15s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--focused-border-color);
+}
+
+#cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  max-height: 400px;
+  position: relative;
+}
+
+#cont canvas,
+.canvas-container {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* #draw { */
+/* opacity: 0.5; */
+/* background-color: #e00; */
+/* } */
+
+/* #cursor { */
+/* opacity: 0.5; */
+/* background-color: #e00; */
+/* } */
+
+#cursor {
+  opacity: 0.5;
+  pointer-events: none !important;
+  /* background-color: #e00; */
+}

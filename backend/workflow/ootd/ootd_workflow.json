@@ -1,0 +1,80 @@
+{
+  "2": {
+    "inputs": {
+      "type": "Half body"
+    },
+    "class_type": "LoadOOTDPipelineHub",
+    "_meta": {
+      "title": "Load OOTDiffusion from Hub🤗"
+    }
+  },
+  "3": {
+    "inputs": {
+      "seed": 351015375364570,
+      "steps": 30,
+      "cfg": 2,
+      "category": "Upper body",
+      "pipe": [
+        "2",
+        0
+      ],
+      "cloth_image": [
+        "4",
+        0
+      ],
+      "model_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "OOTDGenerate",
+    "_meta": {
+      "title": "OOTDiffusion Generate"
+    }
+  },
+  "4": {
+    "inputs": {
+      "image": "../input/qqotzriml72t3nprfnxhp.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "../input/qqotzriml72t3nprfnxhp_bg.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "8": {
+    "inputs": {
+      "filename_prefix": "myFile",
+      "filename_keys": "",
+      "foldername_prefix": "",
+      "foldername_keys": "",
+      "delimiter": "underscore",
+      "save_job_data": "disabled",
+      "job_data_per_image": "disabled",
+      "job_custom_text": "",
+      "save_metadata": "disabled",
+      "counter_digits": 5,
+      "counter_position": "last",
+      "one_counter_per_folder": "disabled",
+      "image_preview": "enabled",
+      "images": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "SaveImageExtended",
+    "_meta": {
+      "title": "Save Image Extended"
+    }
+  }
+}

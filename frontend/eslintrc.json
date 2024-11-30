@@ -1,0 +1,40 @@
+{
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
+  "globals": {
+    "React": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "rules": {
+        "storybook/hierarchy-separator": "error"
+      }
+    }
+  ],
+  "rules": {
+    "no-unused-vars": [0, { "args": "after-used", "argsIgnorePattern": "^_" }],
+    "no-tabs": "off",
+    "prettier/prettier": "off",
+    "import/prefer-default-export": "off",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "import/extensions": "off",
+    "no-shadow": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "react/jsx-filename-extension": "off",
+    "indent": "off",
+    "no-console": "error",
+    "no-duplicate-imports": "error",
+    "no-inline-comments": "off",
+    "no-nested-ternary": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["src", "node_modules"],
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  }
+}
